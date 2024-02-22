@@ -40,7 +40,6 @@ struct Library {
     void printLib() {
         for (int i = 0; i < sizeLib; i++) {
             lib[i].outputbook();
-            cout << "--------------\n";
         }
     }
 };

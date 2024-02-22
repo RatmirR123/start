@@ -14,34 +14,38 @@ struct BOOK {
     int year;
     double price;
     int kategoria;
-    int c = 0;
 
     void inputbook() {
-        cout << "Vvedite avtora\n";
+        cout << "Enter The author\n";
         getline(cin, author);
         if (author == "") {
             getline(cin, author);
         }
-        cout << "Vvedite nazvanie\n";
+        cout << "Enter book title\n";
         getline(cin, zaglavie);
-        cout << "Vvedite got\n";
+        cout << "Enter the year the book was published\n";
         cin >> year;
         while (year < 0) {
-            cout << "Vidi eche raz\n";
+            cout << "Repeat one more time\n";
             cin >> year;
         }
-        cout << "Vvedite zenu\n";
+        cout << "Enter price\n";
         cin >> price;
-        cout << "Vvedite kategoria\n";
+        
+        cout << "Enter category\n";
         kategoria = getkategoria();
     }
 
     void outputbook() {
-        cout << "author - " << author << "\n";
-        cout << "zaglivie - " << zaglavie << "\n";
-        cout << "year -  " << year << "\n";
-        cout << "price - " << price << "\n";
-        cout << "kategoria - " << kategoria << "\n";
+        cout << "-------------\n";
+        cout << "Author - " << author << "\n";
+        cout << "Book title - " << zaglavie << "\n";
+        cout << "Year -  " << year << "\n";
+        cout << "Price - " << price << "\n";
+        cout << "Category - " << kategoria << "\n";
+        cout << "-------------\n";
+        cout << "\n";
+        cout << "\n";
     }
 };
 
@@ -57,7 +61,7 @@ int getkategoria() {
     int answer;
     cin >> answer;
     while (answer < 1 or answer > 3) {
-        cout << "vedi eche raz";
+        cout << "Repeat one more time\n";
         cin >> answer;
     }
     if (answer == 1) {
