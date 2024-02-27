@@ -12,4 +12,3 @@ int main()
     MainMenu(lib);
     return 0;
 }
-
