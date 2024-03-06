@@ -47,6 +47,7 @@ struct BOOK {
         if (author == "") {
             getline(cin, author);
         }
+        
         cout << "Enter book title\n";
         getline(cin, zaglavie);
         cout << "Enter the year the book was published\n";

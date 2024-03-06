@@ -1,11 +1,62 @@
 #pragma once
 
+#include <fstream>
 #include <iostream>
 #include <string>
 #include "Library.h"
 #include "BOOK.h"
-
 using namespace std;
+
+
+void input_file(Library& lib)
+{
+    std::ifstream in;
+    in.open("/Users/ratmirromanov/Desktop/input.txt");
+    while (!in.eof()){
+        BOOK book;
+        in >> book.author >> book.zaglavie >> book.year >> book.price >> book.kategoria;
+        for (int i = 0; i < book.author.size(); i++)
+        {
+            if (book.author[i] == '_'){
+                book.author[i] = ' ';
+            }
+        }
+        for (int i = 0; i < book.zaglavie.size(); i++)
+        {
+            if (book.zaglavie[i] == '_'){
+                book.zaglavie[i] = ' ';
+            }
+        }
+        lib.addBook(book);
+    }
+    in.close();
+}
+
+void output_file(Library& l)
+{
+    std::ofstream out;
+    out.open("/Users/ratmirromanov/Desktop/input.txt");
+    for (int i = 0; i < l.sizeLib; i++){
+        for (int j = 0; j < l.lib[j].author.size(); j++)
+        {
+            if (l.lib[i].author[j] == ' '){
+                l.lib[i].author[j] = '_';
+            }
+        }
+        for (int e = 0; e < l.lib[e].zaglavie.size(); e++)
+        {
+            if (l.lib[i].zaglavie[e] == ' '){
+                l.lib[i].zaglavie[e] = '_';
+            }
+        }
+        out << l.lib[i].author << " " << l.lib[i].zaglavie << " " << l.lib[i].year << " " << l.lib[i].price << " " << l.lib[i].kategoria;
+        out << "\n";
+    }
+    out.close();
+}
+
+
+
 
 
 void vvodMenu() {
@@ -21,15 +72,18 @@ void vvodMenu() {
     cout << "6 - sort the list by title\n";
     cout << "7 - sort the list by author\n";
     cout << "8 - sort the list by category\n";
-    cout << "9 - exit\n";
+    cout << "9 - \n";
+    cout << "10 - \n";
+    cout << "11 - exit\n";
 }
 
 
 void MainMenu(Library lib) {
 
     int answer;
+    
     cin >> answer;
-    while (answer != 9) {
+    while (answer != 11) {
 
         if (answer == 1) {
             BOOK a;
@@ -81,6 +135,12 @@ void MainMenu(Library lib) {
         }
         else if (answer == 8){
             lib.sortLib_kateg();
+        }
+        else if(answer == 9){
+            input_file(lib);
+        }
+        else if(answer == 10){
+            output_file(lib);
         }
 
         cout << "Enter function\n";
